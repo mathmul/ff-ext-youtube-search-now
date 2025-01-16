@@ -9,11 +9,13 @@ and that's it.
 In the second stage ie. if it _is_ a secure YouTube site, all it does is the
 following:
 ```js
-// Prints this comment to console
-console.log('search focused by extension')
-// Finds the first <input> element with id="search", and focuses it so you can
-// immediately start typing.
-document.querySelector('input#search').focus()
+const searchInput = document.querySelector('input[name="search_query"]');
+if (searchInput) {
+    searchInput.focus();
+    searchInput.click();
+    searchInput.dispatchEvent(new Event('focus', { bubbles: true }));
+    console.log('Search input focused by "YouTube Search Now" extension')
+}
 ```
 
 The extension needs no additional permissions, nor does it collect any data.
