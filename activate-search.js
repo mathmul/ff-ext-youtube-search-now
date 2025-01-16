@@ -1,2 +1,7 @@
-console.log('search focused by extension')
-document.querySelector('input#search').focus()
+const searchInput = document.querySelector('input[name="search_query"]');
+if (searchInput) {
+    searchInput.focus();
+    searchInput.click();
+    searchInput.dispatchEvent(new Event('focus', { bubbles: true }));
+    console.log('Search input focused by "YouTube Search Now" extension')
+}
